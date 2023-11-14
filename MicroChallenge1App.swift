@@ -15,3 +15,4 @@ struct MicroChallenge1App: App {
         }
     }
 }
+
