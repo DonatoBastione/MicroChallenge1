@@ -9,28 +9,46 @@ import SwiftUI
 import PencilKit
 
 struct ContentView: View {
-    @State private var canvasView = PKCanvasView()
-    @State var toolBar = false
+    @State var canvasView: PKCanvasView
+    @State var toolBar = true
+    @State var brush = false
     var body: some View {
         NavigationStack{
-            VStack{
-                CanvasView(barCheck: $toolBar, canvasView: $canvasView)
-                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)){
+                
+                CanvasView(barCheck: $brush, canvasView: $canvasView)
+                        
+
+            
+                if toolBar{
+                    TabBar(state: $toolBar, state1: $brush).transition(.move(edge: .bottom))
+                        .zIndex(1.0)
+                        
+                        
+                }
+            }
+            .toolbar {
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "square.and.arrow.up")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "ellipsis.circle")
+                })
+                if brush{
+                    Button(action: {withAnimation{
+                        brush.toggle()
+                        toolBar.toggle()
+                        
+                        
+                    }}, label: {
+                        Text("Done")
+                            .fontWeight(.bold)
+                    })
+                }else{
                     Button(action: {}, label: {
-                        Text("Button")
-                    })
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                    })
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                    })
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                        Image(systemName: "square.and.pencil")
                     })
                 }
-            }.toolbar {
-                    Text("Save")
                 }
             }
         }
@@ -39,5 +57,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    ContentView(canvasView: PKCanvasView())
 }

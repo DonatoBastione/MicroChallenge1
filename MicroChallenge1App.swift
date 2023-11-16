@@ -11,7 +11,7 @@ import SwiftUI
 struct MicroChallenge1App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Selecter()
         }
     }
 }
