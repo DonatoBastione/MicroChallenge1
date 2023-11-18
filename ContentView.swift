@@ -38,8 +38,10 @@ struct ContentView: View {
             }
             .onDisappear{
                 if new{
-                    disegni.drawing.append(Drawing(canvas: canvasView.drawing))
-                    canvasView.drawing = PKDrawing()
+                    if !canvasView.drawing.bounds.isEmpty {
+                        disegni.drawing.append(Drawing(canvas: canvasView.drawing))
+                        canvasView.drawing = PKDrawing()
+                        }
                 }
             }
             .toolbar {
