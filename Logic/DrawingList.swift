@@ -8,15 +8,11 @@
 import Foundation
 import PencilKit
 
-class DrawingList{
+class DrawingList: ObservableObject{
     
-    var drawing: [Drawing] = [
-        Drawing(canvas: PKCanvasView()),
-        Drawing(canvas: PKCanvasView()),
-        Drawing(canvas: PKCanvasView()),
-        Drawing(canvas: PKCanvasView()),
-        Drawing(canvas: PKCanvasView()),
-        Drawing(canvas: PKCanvasView()),Drawing(canvas: PKCanvasView()),Drawing(canvas: PKCanvasView()),Drawing(canvas: PKCanvasView()),
+    @Published var drawing: [Drawing] = [
+        
+        
     ]
     
 }

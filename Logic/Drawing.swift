@@ -12,6 +12,7 @@ import PencilKit
 struct Drawing: Identifiable{
     var id: UUID = UUID()
     var name: String = "Untitled"
-    @State var canvas: PKCanvasView
+    @State var canvas: PKDrawing
+    var preview: Image = Image(systemName: "scribble")
 
 }

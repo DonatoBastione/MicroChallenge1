@@ -10,29 +10,33 @@ import PencilKit
 import SwiftUI
 
 struct CanvasView : UIViewRepresentable {
-  @Binding var barCheck: Bool
-  @Binding var canvasView: PKCanvasView
-  @State var toolPicker = PKToolPicker()
+    @Binding var barCheck: Bool
+    @Binding var canvasView: PKCanvasView
+    @State var toolPicker = PKToolPicker()
+    
+    
+    
+    func makeUIView(context: Context) -> PKCanvasView {
         
-
-
-  func makeUIView(context: Context) -> PKCanvasView {
-      
-      canvasView.tool = PKInkingTool(.pen, color: .gray, width: 10)
-      
+        
+        
+        canvasView.tool = PKInkingTool(.pen, color: .gray, width: 10)
+        
         #if targetEnvironment(simulator)
-          canvasView.drawingPolicy = .anyInput
+            canvasView.drawingPolicy = .anyInput
         #endif
-      
-      showToolPicker()
-      
-      
-    return canvasView
-  }
+        
+        showToolPicker()
+        
+        
+        return canvasView
+    }
+    
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        toolPicker.setVisible(barCheck, forFirstResponder: canvasView)
+    }
+    
 
-  func updateUIView(_ uiView: PKCanvasView, context: Context) {
-      toolPicker.setVisible(barCheck, forFirstResponder: canvasView)
-  }
 }
 
 private extension CanvasView {
