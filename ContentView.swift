@@ -39,14 +39,16 @@ struct ContentView: View {
                 canvasView.drawing = canvasIn.canvas
             }
             .onDisappear{
+                let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
                 if new{
                     if !canvasView.drawing.bounds.isEmpty {
                         disegni.drawing.append(Drawing(canvas: canvasView.drawing))
+                        disegni.drawing[disegni.drawing.count-1].preview = Image(uiImage: image)
                         canvasView.drawing = PKDrawing()
                         }
                 }else{
-                    //Da implementare linearmente
                     disegni.drawing[index].canvas = canvasView.drawing
+                    disegni.drawing[index].preview = Image(uiImage: image)
                 }
             }
             .toolbar {

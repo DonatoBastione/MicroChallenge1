@@ -11,8 +11,6 @@ import PencilKit
 class DrawingList: ObservableObject{
     
     @Published var drawing: [Drawing] = [
-        
-        
     ]
     
 }

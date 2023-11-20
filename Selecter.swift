@@ -26,7 +26,21 @@ struct Selecter: View {
                                 Rectangle()
                                     .frame(width: 150.0, height: 150.0)
                                     .foregroundStyle(Color.gray)
+                                UnevenRoundedRectangle(topLeadingRadius: 25.0, bottomLeadingRadius: 0.0, bottomTrailingRadius: 0.0, topTrailingRadius: 25.0)
+                                    .frame(width: 140.0, height: 100.0)
+                                    .foregroundStyle(Color.white)
+                                    .padding(.bottom, 40.0)
                                 disegni.drawing[i].preview
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 140.0, height: 100.0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                                    .padding(.bottom, 40.0)
+                                Text(disegni.drawing[i].name)
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.leading)
+                                    .padding(.top, 100.0)
+                                    
                             } .clipShape(RoundedRectangle(cornerRadius: 25.0))
                         }
 )
@@ -42,10 +56,11 @@ struct Selecter: View {
                                     Image(systemName: "square.and.pencil")
 
                             })
+                        
                     }
                     
                     ToolbarItem(placement: .topBarTrailing){
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        Button(action: {}, label: {
                             Image(systemName: "ellipsis.circle")
                         })
 
