@@ -42,6 +42,9 @@ struct ContentView: View {
                         disegni.drawing.append(Drawing(canvas: canvasView.drawing))
                         canvasView.drawing = PKDrawing()
                         }
+                }else{
+                    //Da implementare linearmente
+                    disegni.drawing[0].canvas = canvasView.drawing
                 }
             }
             .toolbar {
