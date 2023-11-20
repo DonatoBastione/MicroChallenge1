@@ -20,13 +20,13 @@ struct Selecter: View {
         NavigationStack{
             ScrollView{
                 LazyVGrid(columns: columns){
-                    ForEach(disegni.drawing){drawing in
-                        NavigationLink(destination: ContentView(canvasIn: drawing, new: false, disegni: disegni) ,label:{
+                    ForEach(0..<disegni.drawing.count, id: \.self){i in
+                        NavigationLink(destination: ContentView(canvasIn: disegni.drawing[i], new: false, disegni: disegni, index: i) ,label:{
                             ZStack{
                                 Rectangle()
                                     .frame(width: 150.0, height: 150.0)
                                     .foregroundStyle(Color.gray)
-                                drawing.preview
+                                disegni.drawing[i].preview
                             } .clipShape(RoundedRectangle(cornerRadius: 25.0))
                         }
 )
@@ -37,7 +37,7 @@ struct Selecter: View {
                     
                     ToolbarItem(placement: .topBarTrailing){
                         NavigationLink(
-                            destination: ContentView(canvasIn: Drawing(name: "new", canvas: PKDrawing()), new: true, disegni: disegni),
+                            destination: ContentView(canvasIn: Drawing(name: "new", canvas: PKDrawing()), new: true, disegni: disegni, index: 0),
                             label: {
                                     Image(systemName: "square.and.pencil")
 

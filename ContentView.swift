@@ -18,6 +18,8 @@ struct ContentView: View {
     var new: Bool
     
     var disegni: DrawingList
+    
+    var index: Int
         
     var body: some View {
         
@@ -44,7 +46,7 @@ struct ContentView: View {
                         }
                 }else{
                     //Da implementare linearmente
-                    disegni.drawing[0].canvas = canvasView.drawing
+                    disegni.drawing[index].canvas = canvasView.drawing
                 }
             }
             .toolbar {
@@ -89,5 +91,5 @@ struct ContentView: View {
 
 
 #Preview {
-   ContentView(canvasIn: Drawing(canvas: PKDrawing()), new: false, disegni: DrawingList())
+   ContentView(canvasIn: Drawing(canvas: PKDrawing()), new: false, disegni: DrawingList(), index: 0)
 }
