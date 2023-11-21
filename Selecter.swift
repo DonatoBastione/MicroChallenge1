@@ -56,6 +56,8 @@ struct Selecter: View {
                                     Image(systemName: "square.and.pencil")
 
                             })
+                        .accessibilityLabel(/*@START_MENU_TOKEN@*/"New Canvas"/*@END_MENU_TOKEN@*/)
+                        .accessibilityHint("Tap here to create a new canvas")
                         
                     }
                     

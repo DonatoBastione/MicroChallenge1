@@ -20,6 +20,7 @@ struct TabBar: View {
                 }}, label: {
                     Image(systemName: "pencil.tip.crop.circle")
                 })
+                .accessibilityLabel("tool picker")
                 Spacer()
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {

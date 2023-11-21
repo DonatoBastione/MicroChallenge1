@@ -60,6 +60,7 @@ struct ContentView: View {
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                     Image(systemName: "ellipsis.circle")
                 })
+                .accessibilityLabel("Options")
                 if brush{
                     Button(action: {withAnimation{
                         brush.toggle()
@@ -70,12 +71,15 @@ struct ContentView: View {
                         Text("Done")
                             .fontWeight(.bold)
                     })
+                    .accessibilityLabel("Done")
+                    .accessibilityHint("Tap here to close the toolpicker")
                 }else{
                     Button(action: {
                         canvasView.drawing = PKDrawing()
                     }, label: {
                         Image(systemName: "square.and.pencil")
                     })
+                    .accessibilityLabel("Clear canvas")
                 }
                 }
             .toolbar{
