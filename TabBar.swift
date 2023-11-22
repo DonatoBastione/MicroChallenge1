@@ -43,7 +43,7 @@ struct TabBar: View {
                 Spacer()
                 
             }
-        }.background(.white)
+        }
 
     }
 }
