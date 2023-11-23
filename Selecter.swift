@@ -10,6 +10,10 @@ import PencilKit
 
 struct Selecter: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    init(){
+        UINavigationBar.appearance() .largeTitleTextAttributes = [.foregroundColor:
+                                                                    UIColor.init(Color.accentColor)]
+    }
     
     @State private var searchText = ""
     
@@ -40,11 +44,11 @@ struct Selecter: View {
                                     .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
                                     .padding(.top, 100.0)
-                                    
+                                
                             } .clipShape(RoundedRectangle(cornerRadius: 25.0))
                         }
-)
-                    
+                        )
+                        
                     }
                 }
                 .toolbar{
@@ -53,10 +57,10 @@ struct Selecter: View {
                         NavigationLink(
                             destination: ContentView(canvasIn: Drawing(name: "new", canvas: PKDrawing()), new: true, disegni: disegni, index: 0),
                             label: {
-                                    Image(systemName: "square.and.pencil")
-
+                                Image(systemName: "square.and.pencil")
+                                
                             })
-                        .accessibilityLabel(/*@START_MENU_TOKEN@*/"New Canvas"/*@END_MENU_TOKEN@*/)
+                        .accessibilityLabel("New Canvas")
                         .accessibilityHint("Tap here to create a new canvas")
                         
                     }
@@ -65,13 +69,14 @@ struct Selecter: View {
                         Button(action: {}, label: {
                             Image(systemName: "ellipsis.circle")
                         })
-
+                        
                     }
                     
                 }
                 
             }
             .navigationTitle("All Boards")
+            
         }.searchable(text: $searchText)
     }
 }
